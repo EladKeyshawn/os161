@@ -75,8 +75,11 @@ void V(struct semaphore *);
 struct lock {
         char *lk_name;
         HANGMAN_LOCKABLE(lk_hangman);   /* Deadlock detector hook. */
-        // add what you need here
-        // (don't forget to mark things volatile as needed)
+        struct wchan *wchan;
+        struct spinlock splk_lock;
+        volatile bool is_locked;
+        volatile struct thread* lk_holder;
+
 };
 
 struct lock *lock_create(const char *name);

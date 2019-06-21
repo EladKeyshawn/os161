@@ -10,3 +10,6 @@ build
 /root/
 *.swo
 *.swp
+*.DS_Store*
+.vscode/
+
